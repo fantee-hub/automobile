@@ -1,209 +1,613 @@
-import Head from 'next/head'
+import Head from "next/head";
+import Image from "next/image";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+import styled from "styled-components";
+import carOne from "../assests/apply-img.jpg";
+import carTwo from "../assests/inventory-img.jpg";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import carThree from "../assests/download.jpeg";
+import carFour from "../assests/slide2.jpg";
+import carFive from "../assests/slide3.jpg";
+import carSix from "../assests/car1.jpg";
+import carSeven from "../assests/car2.jpg";
+import carEight from "../assests/car3.jpg";
+import carNine from "../assests/car4.jpg";
+import carTen from "../assests/car5.jpg";
+import carEleven from "../assests/car6.jpg";
+import carTwelve from "../assests/car7.jpg";
+import carThirteen from "../assests/car8.jpg";
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", right: "10px", zIndex: 2 }}
+      onClick={onClick}
+    />
+  );
+}
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+
+        left: "10px",
+        zIndex: 2,
+      }}
+      onClick={onClick}
+    />
+  );
+}
 
 export default function Home() {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
+  const settingsTwo = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+  };
+  const settingsThree = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <Nav />
+      <HomeContainer>
+        <Head>
+          <title>Automobiles</title>
+        </Head>
 
-      <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div className="col-1">
+          <div className="image-section">
+            <div className="images">
+              <Image src={carOne} />
+            </div>
+            <div className="images">
+              <Image src={carTwo} />
+            </div>
+          </div>
+          <div className="price-section">
+            <div className="price-header">
+              <h3> SEARCH BY PRICE</h3>
+            </div>
+            <div className="price-content">
+              <div className="price">
+                <p>Under $5,000</p>
+                <p>Under $15,000</p>
+                <p>Under $25,000</p>
+                <p>Under $35,000</p>
+              </div>
+              <div className="price">
+                <p>Under $10,000</p>
+                <p>Under $20,000</p>
+                <p>Under $30,000</p>
+                <p>All cars</p>
+              </div>
+            </div>
+          </div>
+          <div className="shop-section">
+            <div className="header">
+              <h3>SHOP BY MAKE</h3>
+            </div>
+            <div className="shop-content">
+              <div className="shop-items">
+                <p>CHEVROLET (7)</p>
+                <p>CHRYSLER (5)</p>
+                <p>FORD (6)</p>
+                <p>HYUNDAI (2)</p>
+                <p>LEXUS (3)</p>
+              </div>
+              <div className="shop-items">
+                <p>MERCEDES-BENZ (3)</p>
+                <p>NISSAN (4)</p>
+                <p>RAM (1)</p>
+                <p>TOYOTA (5)</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
+        <div className="col-2">
+          <div className="first-slider">
+            <Slider {...settings}>
+              <div>
+                <Image src={carThree} />
+              </div>
+              <div>
+                <Image src={carFour} />
+              </div>
+              <div>
+                <Image src={carFive} />
+              </div>
+            </Slider>
+          </div>
+          <div className="second-slider">
+            <Slider {...settingsTwo}>
+              <div className="images">
+                <Image src={carSix} />
+                <div className="img-contents">
+                  <h4>2002 LEXUS ES</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$3,999</button>
+                  </div>
+                </div>
+              </div>
+              <div className="images">
+                <Image src={carSeven} />
+                <div className="img-contents">
+                  <h4>2002 LEXUS ES</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$3,999</button>
+                  </div>
+                </div>
+              </div>
+              <div className="images">
+                <Image src={carEight} />
+                <div className="img-contents">
+                  <h4>2002 LEXUS ES</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$3,999</button>
+                  </div>
+                </div>
+              </div>
+              <div className="images">
+                <Image src={carNine} />
+                <div className="img-contents">
+                  <h4>2002 LEXUS ES</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$3,999</button>
+                  </div>
+                </div>
+              </div>
+              <div className="images">
+                <Image src={carTen} />
+                <div className="img-contents">
+                  <h4>2002 LEXUS ES</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$3,999</button>
+                  </div>
+                </div>
+              </div>
+              <div className="images">
+                <Image src={carEleven} />
+                <div className="img-contents">
+                  <h4>2002 LEXUS ES</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$3,999</button>
+                  </div>
+                </div>
+              </div>
+              <div className="images">
+                <Image src={carTwelve} />
+                <div className="img-contents">
+                  <h4>2002 LEXUS ES</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$3,999</button>
+                  </div>
+                </div>
+              </div>
+              <div className="images">
+                <Image src={carThirteen} />
+                <div className="img-contents">
+                  <h4>2002 LEXUS ES</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$3,999</button>
+                  </div>
+                </div>
+              </div>
+            </Slider>
+          </div>
+          <div className="welcome-section">
+            <div className="header">
+              <h3>WELCOME TO BUDEROCK AUTO</h3>
+            </div>
+            <div className="contents">
+              <p>
+                Buderock Auto is dedicated to providing you with the ultimate
+                automobile buying experience. Buderock Auto is your #1 source
+                for buying a quality pre-owned vehicle. We have extensive
+                relationships in the dealer community allowing us to purchase a
+                wide variety of lease returns and new car trades at exceptional
+                values. This enables Buderock Auto to pass along huge savings on
+                the highest quality vehicles of your choice. In addition, we
+                offer a full array of financing options to meet your needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </HomeContainer>
+      <MobileView>
+        <div className="first-slider">
+          <Slider {...settings}>
+            <div>
+              <Image src={carThree} />
+            </div>
+            <div>
+              <Image src={carFour} />
+            </div>
+            <div>
+              <Image src={carFive} />
+            </div>
+          </Slider>
+        </div>
+        <div className="price-section">
+          <div className="price-header">
+            <h3> SEARCH BY PRICE</h3>
+          </div>
+          <div className="price-content">
+            <div className="price">
+              <p>Under $5,000</p>
+              <p>Under $15,000</p>
+              <p>Under $25,000</p>
+              <p>Under $35,000</p>
+            </div>
+            <div className="price">
+              <p>Under $10,000</p>
+              <p>Under $20,000</p>
+              <p>Under $30,000</p>
+              <p>All cars</p>
+            </div>
+          </div>
+        </div>
+        <div className="second-slider">
+          <Slider {...settingsThree}>
+            <div className="images">
+              <img src={carSix.src} />
+              <div className="img-contents">
+                <h4>2002 LEXUS ES</h4>
+                <p>180,690 miles</p>
+                <div className="btn">
+                  <button>$3,999</button>
+                </div>
+              </div>
+            </div>
+            <div className="images">
+              <img src={carSeven.src} />
+              <div className="img-contents">
+                <h4>2002 LEXUS ES</h4>
+                <p>180,690 miles</p>
+                <div className="btn">
+                  <button>$3,999</button>
+                </div>
+              </div>
+            </div>
+            <div className="images">
+              <img src={carEight.src} />
+              <div className="img-contents">
+                <h4>2002 LEXUS ES</h4>
+                <p>180,690 miles</p>
+                <div className="btn">
+                  <button>$3,999</button>
+                </div>
+              </div>
+            </div>
+            <div className="images">
+              <img src={carNine.src} />
+              <div className="img-contents">
+                <h4>2002 LEXUS ES</h4>
+                <p>180,690 miles</p>
+                <div className="btn">
+                  <button>$3,999</button>
+                </div>
+              </div>
+            </div>
+            <div className="images">
+              <img src={carTen.src} />
+              <div className="img-contents">
+                <h4>2002 LEXUS ES</h4>
+                <p>180,690 miles</p>
+                <div className="btn">
+                  <button>$3,999</button>
+                </div>
+              </div>
+            </div>
+            <div className="images">
+              <img src={carEleven.src} />
+              <div className="img-contents">
+                <h4>2002 LEXUS ES</h4>
+                <p>180,690 miles</p>
+                <div className="btn">
+                  <button>$3,999</button>
+                </div>
+              </div>
+            </div>
+            <div className="images">
+              <img src={carTwelve.src} />
+              <div className="img-contents">
+                <h4>2002 LEXUS ES</h4>
+                <p>180,690 miles</p>
+                <div className="btn">
+                  <button>$3,999</button>
+                </div>
+              </div>
+            </div>
+            <div className="images">
+              <img src={carThirteen.src} />
+              <div className="img-contents">
+                <h4>2002 LEXUS ES</h4>
+                <p>180,690 miles</p>
+                <div className="btn">
+                  <button>$3,999</button>
+                </div>
+              </div>
+            </div>
+          </Slider>
+        </div>
+        <div className="shop-section">
+          <div className="header">
+            <h3>SHOP BY MAKE</h3>
+          </div>
+          <div className="shop-content">
+            <div className="shop-items">
+              <p>CHEVROLET (7)</p>
+              <p>CHRYSLER (5)</p>
+              <p>FORD (6)</p>
+              <p>HYUNDAI (2)</p>
+              <p>LEXUS (3)</p>
+            </div>
+            <div className="shop-items">
+              <p>MERCEDES-BENZ (3)</p>
+              <p>NISSAN (4)</p>
+              <p>RAM (1)</p>
+              <p>TOYOTA (5)</p>
+            </div>
+          </div>
+        </div>
+        <div className="welcome-section">
+          <div className="header">
+            <h3>WELCOME TO BUDEROCK AUTO</h3>
+          </div>
+          <div className="contents">
+            <p>
+              Buderock Auto is dedicated to providing you with the ultimate
+              automobile buying experience. Buderock Auto is your #1 source for
+              buying a quality pre-owned vehicle. We have extensive
+              relationships in the dealer community allowing us to purchase a
+              wide variety of lease returns and new car trades at exceptional
+              values. This enables Buderock Auto to pass along huge savings on
+              the highest quality vehicles of your choice. In addition, we offer
+              a full array of financing options to meet your needs.
+            </p>
+          </div>
+        </div>
+      </MobileView>
+      <Footer />
+    </>
+  );
+}
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className="logo" />
-        </a>
-      </footer>
+const HomeContainer = styled.div`
+  @media screen and (max-width: 765px) {
+    display: none;
+  }
 
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+  background: #eeeeee;
+  display: flex;
+  max-width: 80rem;
+  margin: 0 auto;
+  .col-1 {
+    width: 30%;
+    padding: 0 1rem;
+    .price-section {
+      .price-header {
+        text-align: center;
+        background: #303030;
+        color: #ffffff;
+        h3 {
+          padding: 0.4rem 0;
         }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
+      }
+      .price-content {
+        display: flex;
+        justify-content: space-between;
+        .price p {
+          background-color: #3367fc;
+          color: #ffffff;
+          margin: 0.5rem 0;
+          padding: 0.6rem 2rem;
           text-align: center;
         }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
+      }
+    }
+    .shop-section {
+      .header {
+        text-align: center;
+        background: #303030;
+        color: #ffffff;
+        h3 {
+          padding: 0.4rem 0;
         }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
+      }
+      .shop-content {
+        display: flex;
+        justify-content: space-between;
+        .shop-items {
+          p {
+            padding: 0.4rem 0;
           }
         }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
+      }
+    }
+  }
+  .col-2 {
+    width: 70%;
+    .first-slider {
+      .slick-dots {
+        top: 15px;
+        li button:before {
+          font-family: "slick";
+          font-size: 20px;
+          line-height: 20px;
         }
+      }
+    }
+    .second-slider {
+      background-color: #3d3d3d;
+      padding: 1rem 2rem;
+      text-align: center;
 
-        * {
-          box-sizing: border-box;
+      .images {
+        .img-contents {
+          p {
+            padding: 0.1rem 0;
+            color: #ffffff;
+          }
+          h4 {
+            color: #ffffff;
+            padding-top: 0.2rem;
+          }
+          .btn {
+            padding-top: 0.5rem;
+            button {
+              color: #ffffff;
+              background: #3367fc;
+              border: none;
+              padding: 0.6rem 1rem;
+              cursor: pointer;
+            }
+          }
         }
-      `}</style>
-    </div>
-  )
-}
+      }
+    }
+    .welcome-section {
+      .header {
+        text-align: center;
+        background: #3367fc;
+        color: #ffffff;
+        padding: 0.6rem 0;
+        margin: 1rem 0;
+      }
+      .contents {
+        padding: 0.6rem;
+      }
+    }
+  }
+`;
+const MobileView = styled.div`
+  @media screen and (min-width: 765px) {
+    display: none;
+  }
+  padding-top: 3rem;
+  .price-section {
+    .price-header {
+      text-align: center;
+      background: #303030;
+      color: #ffffff;
+      h3 {
+        padding: 0.4rem 0;
+      }
+    }
+    .price-content {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+      .price p {
+        background-color: #3367fc;
+        color: #ffffff;
+        margin: 0.5rem 0;
+        padding: 0.6rem 1rem;
+
+        text-align: center;
+      }
+    }
+  }
+  .second-slider {
+    background-color: #3d3d3d;
+    padding: 1rem 2rem;
+    text-align: center;
+
+    .images {
+      text-align: center;
+      img {
+        width: 50%;
+        margin: 0 auto;
+      }
+      .img-contents {
+        p {
+          padding: 0.1rem 0;
+          color: #ffffff;
+        }
+        h4 {
+          color: #ffffff;
+          padding-top: 0.2rem;
+        }
+        .btn {
+          padding-top: 0.5rem;
+          button {
+            color: #ffffff;
+            background: #3367fc;
+            border: none;
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .shop-section {
+    padding: 0.5rem 0;
+    text-align: center;
+    .header {
+      text-align: center;
+      background: #303030;
+      color: #ffffff;
+      h3 {
+        padding: 0.4rem 0;
+      }
+    }
+    .shop-content {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 1rem;
+      .shop-items {
+        p {
+          padding: 0.4rem 0;
+          color: #3367fc;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  .welcome-section {
+    padding: 0.5rem 0;
+    .header {
+      text-align: center;
+      background: #3367fc;
+      color: #ffffff;
+      padding: 0.6rem 0;
+      margin: 1rem 0;
+    }
+    .contents {
+      padding: 0 0.6rem 0.5rem 0.6rem;
+    }
+  }
+`;
