@@ -1,16 +1,23 @@
 import App from "next/app";
-import React from "react";
+import React, { useState } from "react";
+import AppContext from "../components/contextApi/AppContext";
 import { GlobalStyling } from "../components/styles/globalStyle";
 
-class MyApp extends App {
-  render() {
-    const { Component, pageProps } = this.props;
-    return (
-      <>
-        <GlobalStyling />
-        <Component {...pageProps}></Component>
-      </>
-    );
-  }
+function MyApp({ Component, pageProps }) {
+  const [carData, setCarData] = useState();
+  const [searchInput, setSearchInput] = useState("");
+  const value = {
+    carData,
+    setCarData,
+    searchInput,
+    setSearchInput,
+  };
+  return (
+    <AppContext.Provider value={value}>
+      <GlobalStyling />
+      <Component {...pageProps}></Component>
+    </AppContext.Provider>
+  );
 }
+
 export default MyApp;

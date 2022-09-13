@@ -1,14 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faMapMarker } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faMapMarker,
+  faSearch,
+} from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import styled from "styled-components";
 import logo from "../assests/logo.png";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useRef, useState, useContext } from "react";
+import Modal from "./Modal";
+import AppContext from "./contextApi/AppContext";
 
 const Nav = () => {
   const { pathname } = useRouter();
+  const [searchToggle, setSearchToggle] = useState(false);
+  const { searchInput } = useContext(AppContext);
 
   const linksContainer = useRef();
   const links = useRef();
@@ -23,8 +31,18 @@ const Nav = () => {
       linksContainer.current.style.height = 0;
     }
   };
+  const searchHandler = () => {
+    setSearchToggle(!searchToggle);
+  };
+
   return (
     <>
+      {searchToggle ? (
+        <Modal searchToggle={searchToggle} setSearchToggle={setSearchToggle} />
+      ) : (
+        ""
+      )}
+
       <NavBar>
         <div className="nav-content">
           <div className="logo">
@@ -69,7 +87,11 @@ const Nav = () => {
                 <li>Home</li>
               </Link>
             </div>
-            <div>
+            <div
+              className={` ${
+                pathname === "/inventory/[id]" ? "active-link" : ""
+              }`}
+            >
               <li>Inventory</li>
             </div>
             <div>
@@ -87,8 +109,10 @@ const Nav = () => {
             </div>
           </div>
 
-          <div className="search-bar">
-            <span>Search icon</span>
+          <div className="search-bar" onClick={searchHandler}>
+            <span>
+              <FontAwesomeIcon icon={faSearch} />
+            </span>
           </div>
         </ul>
       </MainNav>
@@ -181,7 +205,7 @@ const MainNav = styled.div`
   color: #ffffff;
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 99;
   @media screen and (max-width: 765px) {
     display: none;
   }
@@ -204,6 +228,7 @@ const MainNav = styled.div`
     }
     .search-bar {
       padding-right: 1.5rem;
+      cursor: pointer;
     }
   }
 `;
@@ -218,7 +243,7 @@ const MobileNav = styled.nav`
     right: 0;
     left: 0;
     background: #ffffff;
-    z-index: 999;
+    z-index: 99;
     .nav-header {
       display: flex;
       align-items: center;
