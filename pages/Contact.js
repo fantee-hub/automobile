@@ -74,6 +74,7 @@ export default function Contact() {
               <div className="gmap_canvas">
                 <iframe
                   id="gmap_canvas"
+                  className="responsive-iframe"
                   src="https://maps.google.com/maps?q=Buderock%20Auto&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 ></iframe>
               </div>
@@ -91,12 +92,18 @@ const ContactContainer = styled.div`
   margin: 0 auto;
   background: #eeeeee;
   padding: 0.7rem 1.5rem;
+  @media screen and (max-width: 765px) {
+    padding: 5rem 1rem 0.7rem 1rem;
+  }
   .header {
     text-align: center;
 
     padding: 1.5rem 0;
   }
   .contact-contents {
+    @media screen and (max-width: 765px) {
+      flex-direction: column;
+    }
     display: flex;
     justify-content: space-between;
     .content-header {
@@ -125,18 +132,21 @@ const ContactContainer = styled.div`
       padding: 0.3rem 0;
     }
     .mapouter {
-      position: relative;
-      text-align: right;
-      height: 600px;
-      width: 700px;
       .gmap_canvas {
+        position: relative;
         overflow: hidden;
-        background: none !important;
-        height: 600px;
-        width: 700px;
-        iframe {
-          width: 800px;
-          height: 400px;
+        width: 100%;
+
+        padding-top: 56.25%;
+        .responsive-iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          width: 100%;
+          height: 100%;
+
           border: none;
         }
       }
