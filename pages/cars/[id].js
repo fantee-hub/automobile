@@ -153,6 +153,9 @@ const CarSection = styled.div`
     justify-content: space-between;
     padding: 1.5rem 1rem;
     color: #ffffff;
+    @media screen and (max-width: 765px) {
+      font-size: 0.65rem;
+    }
   }
 `;
 

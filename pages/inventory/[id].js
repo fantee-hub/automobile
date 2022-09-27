@@ -17,6 +17,9 @@ export default function Inventory() {
             <div className="image-section">
               {carData.map((data, index) => (
                 <div className="car-details">
+                  <div className="main-price">
+                    <h3>${data.price}</h3>
+                  </div>
                   <Link href={"/cars/" + data.commonName.toLowerCase()}>
                     <div className="img-cont">
                       <img src={data.images[0]} alt={data.name} key={index} />
@@ -32,23 +35,23 @@ export default function Inventory() {
                         <h6>Drivetrain</h6>
                         <p>{data.driveTrain}</p>
                       </div>
-                      <div className="items">
+                      <div className="items mobile">
                         <h6>Transmission</h6>
                         <p>{data.tranmission}</p>
                       </div>
-                      <div className="items">
+                      <div className="items mobile">
                         <h6>Engine</h6>
                         <p>{data.engine}</p>
                       </div>
-                      <div className="items">
+                      <div className="items mobile">
                         <h6>Mileage</h6>
                         <p>{data.mileage}</p>
                       </div>
-                      <div className="items">
+                      <div className="items mobile">
                         <h6>Doors</h6>
                         <p>{data.doors}</p>
                       </div>
-                      <div className="items">
+                      <div className="items mobile">
                         <h6>VIN</h6>
                         <p>{data.vin}</p>
                       </div>
@@ -58,7 +61,7 @@ export default function Inventory() {
                       </div>
                     </div>
                   </div>
-                  <div className="price">
+                  <div className="price mobile">
                     <h3>${data.price}</h3>
                   </div>
                 </div>
@@ -114,6 +117,28 @@ const InventorySection = styled.div`
         .price {
           padding: 1rem 0;
           color: #4868fc;
+        }
+        @media screen and (max-width: 765px) {
+          flex-direction: column;
+          .main-price {
+            text-align: right;
+            padding: 0.5rem;
+            color: #4868fc;
+          }
+          .img-cont {
+            text-align: center;
+            margin-bottom: 0.4rem;
+          }
+          .data-content {
+            .components {
+              .items.mobile {
+                display: none;
+              }
+            }
+          }
+          .price.mobile {
+            display: none;
+          }
         }
       }
     }
