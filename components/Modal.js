@@ -21,7 +21,7 @@ export default function Modal({ setSearchToggle }) {
     setSearchInput(input);
     closeSearchBar();
     const check = cars.filter((car) => {
-      if (car.commonName.toLowerCase().includes(input)) {
+      if (car.commonName.toLowerCase().includes(input.toLowerCase())) {
         return car;
       }
     });
@@ -86,6 +86,9 @@ const ModalContainer = styled.div`
     background: transparent;
 
     z-index: 999;
+    @media screen and (max-width: 760px) {
+      width: 100%;
+    }
     .modal-content {
       display: flex;
       justify-content: center;
@@ -101,6 +104,9 @@ const ModalContainer = styled.div`
         width: 40vw;
         margin-bottom: 15px;
         margin-top: 5px;
+        @media screen and (max-width: 765px) {
+          width: 90vw;
+        }
         .search-icon {
           padding: 10px;
           background: #3367fc;

@@ -1,4 +1,3 @@
-import App from "next/app";
 import React, { useState } from "react";
 import AppContext from "../components/contextApi/AppContext";
 import { GlobalStyling } from "../components/styles/globalStyle";

@@ -145,6 +145,11 @@ const Nav = () => {
                   <li>Contact Us</li>
                 </Link>
               </div>
+              <div className="search-bar" onClick={searchHandler}>
+                <span>
+                  <FontAwesomeIcon icon={faSearch} />
+                </span>
+              </div>
             </ul>
           </div>
         </div>

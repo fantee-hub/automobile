@@ -16,7 +16,7 @@ export default function Inventory() {
           <div className="inventory-contents">
             <div className="image-section">
               {carData.map((data, index) => (
-                <div className="car-details">
+                <div className="car-details" key={index}>
                   <div className="main-price">
                     <h3>${data.price}</h3>
                   </div>

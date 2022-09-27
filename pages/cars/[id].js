@@ -5,6 +5,7 @@ import Nav from "../../components/Nav";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { useRouter } from "next/router";
 
 export default function Cars({ carData }) {
   const settings = {
@@ -15,13 +16,14 @@ export default function Cars({ carData }) {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+  const router = useRouter();
 
   return (
     <>
       <Nav />
       <CarSection>
         <div className="back-button">
-          <Link href="/">Back</Link>
+          <span onClick={() => router.back()}>Back</span>
         </div>
         <div className="car-header">
           <div className="car-title">
@@ -35,7 +37,7 @@ export default function Cars({ carData }) {
           <div className="slider">
             <Slider {...settings}>
               {carData.cars[0].images.map((img, index) => (
-                <div className="images">
+                <div className="images" key={index}>
                   <img src={img} key={index} />
                 </div>
               ))}
@@ -145,6 +147,12 @@ const CarSection = styled.div`
   padding: 0.7rem 1.5rem;
   @media screen and (max-width: 765px) {
     padding: 5rem 1rem 0.7rem 1rem;
+  }
+  .back-button {
+    span {
+      font-weight: 600;
+      color: #3367fc;
+    }
   }
   .car-header {
     margin: 1rem 0;
