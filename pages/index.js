@@ -303,86 +303,108 @@ export default function Home() {
         </div>
         <div className="second-slider">
           <Slider {...settingsThree}>
-            <div className="images">
-              <img src={carSix.src} />
-              <div className="img-contents">
-                <h4>2002 LEXUS ES</h4>
-                <p>180,690 miles</p>
-                <div className="btn">
-                  <button>$3,999</button>
+            <Link href="/cars/2004 lexus es">
+              <div className="images">
+                <Image src={carSix} />
+                <div className="img-contents">
+                  <h4>2004 LEXUS ES</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$3,999</button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="images">
-              <img src={carSeven.src} />
-              <div className="img-contents">
-                <h4>2002 LEXUS ES</h4>
-                <p>180,690 miles</p>
-                <div className="btn">
-                  <button>$3,999</button>
+            </Link>
+            <Link href="/cars/2011 toyota camry">
+              <div className="images">
+                <Image src={carSeven} />
+                <div className="img-contents">
+                  <h4>2011 Toyota Camry</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$7,000</button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="images">
-              <img src={carEight.src} />
-              <div className="img-contents">
-                <h4>2002 LEXUS ES</h4>
-                <p>180,690 miles</p>
-                <div className="btn">
-                  <button>$3,999</button>
+            </Link>
+
+            <Link href="/cars/2003 chevrolet suburban">
+              <div className="images">
+                <Image src={carEight} />
+                <div className="img-contents">
+                  <h4>2003 Chevrolet Suburban</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$4,000</button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="images">
-              <img src={carNine.src} />
-              <div className="img-contents">
-                <h4>2002 LEXUS ES</h4>
-                <p>180,690 miles</p>
-                <div className="btn">
-                  <button>$3,999</button>
+            </Link>
+
+            <Link href="/cars/2011 chevrolet malibu">
+              <div className="images">
+                <Image src={carNine} />
+                <div className="img-contents">
+                  <h4>2011 Chevrolet Malibu</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$5,000</button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="images">
-              <img src={carTen.src} />
-              <div className="img-contents">
-                <h4>2002 LEXUS ES</h4>
-                <p>180,690 miles</p>
-                <div className="btn">
-                  <button>$3,999</button>
+            </Link>
+
+            <Link href="/cars/2008 saturn aura">
+              <div className="images">
+                <Image src={carTen} />
+                <div className="img-contents">
+                  <h4>2008 Saturn Aura</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$2,999</button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="images">
-              <img src={carEleven.src} />
-              <div className="img-contents">
-                <h4>2002 LEXUS ES</h4>
-                <p>180,690 miles</p>
-                <div className="btn">
-                  <button>$3,999</button>
+            </Link>
+
+            <Link href="/cars/2014 chrysler 200">
+              <div className="images">
+                <Image src={carEleven} />
+                <div className="img-contents">
+                  <h4>2014 CHRYSLER 200</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$5,200</button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="images">
-              <img src={carTwelve.src} />
-              <div className="img-contents">
-                <h4>2002 LEXUS ES</h4>
-                <p>180,690 miles</p>
-                <div className="btn">
-                  <button>$3,999</button>
+            </Link>
+
+            <Link href="/cars/2007 acura mdx">
+              <div className="images">
+                <Image src={carTwelve} />
+                <div className="img-contents">
+                  <h4>2007 ACURA MDX</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$6,499</button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="images">
-              <img src={carThirteen.src} />
-              <div className="img-contents">
-                <h4>2002 LEXUS ES</h4>
-                <p>180,690 miles</p>
-                <div className="btn">
-                  <button>$3,999</button>
+            </Link>
+
+            <Link href="/cars/2004 ford f150 super cab">
+              <div className="images">
+                <Image src={carThirteen} />
+                <div className="img-contents">
+                  <h4>2004 FORD F150 SUPER CAB</h4>
+                  <p>180,690 miles</p>
+                  <div className="btn">
+                    <button>$7,000</button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </Slider>
         </div>
         <div className="shop-section">

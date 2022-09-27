@@ -8,13 +8,6 @@ import Slider from "react-slick";
 
 export default function Cars({ carData }) {
   const settings = {
-    // customPaging: function(i) {
-    //   return (
-    //     <a>
-    //       <img src={`${baseUrl}/abstract0${i + 1}.jpg`} />
-    //     </a>
-    //   );
-    // },
     dots: true,
     dotsClass: "slick-dots slick-thumb",
     infinite: true,
@@ -173,7 +166,6 @@ const MainContent = styled.div`
       img {
         width: 400px;
         height: 400px;
-
         object-fit: contain;
       }
     }
@@ -192,6 +184,9 @@ const MainContent = styled.div`
             font-weight: 600;
           }
         }
+      }
+      @media screen and (max-width: 765px) {
+        padding: 1.5rem 0;
       }
     }
     .col-2 {
@@ -217,6 +212,24 @@ const MainContent = styled.div`
           .input-field.price {
             text-align: right;
           }
+        }
+      }
+    }
+    @media screen and (max-width: 765px) {
+      flex-direction: column;
+    }
+  }
+  @media screen and (max-width: 765px) {
+    flex-direction: column;
+    .slider {
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
+      .images {
+        img {
+          width: 400px;
+          height: 400px;
+          object-fit: cover;
         }
       }
     }
