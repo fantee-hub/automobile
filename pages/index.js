@@ -309,7 +309,7 @@ export default function Home() {
           <div className="price-header">
             <h3> SEARCH BY PRICE</h3>
           </div>
-          <div className="price-content">
+          <div className="price-content" onClick={getCarsHandler}>
             <div className="price">
               <p>Under $5,000</p>
               <p>Under $15,000</p>

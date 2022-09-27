@@ -9,8 +9,8 @@ import AppContext from "./contextApi/AppContext";
 export default function Modal({ setSearchToggle }) {
   const cars = getAllCars();
   const [input, setInput] = useState("");
-  const { pathname } = Router;
-  const { carData, setCarData, setSearchInput } = useContext(AppContext);
+
+  const { setCarData, setSearchInput } = useContext(AppContext);
 
   const getSearchInput = (e) => {
     setInput(e.target.value);
