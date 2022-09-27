@@ -5,6 +5,7 @@ import { GlobalStyling } from "../components/styles/globalStyle";
 function MyApp({ Component, pageProps }) {
   const [carData, setCarData] = useState();
   const [searchInput, setSearchInput] = useState("");
+
   const value = {
     carData,
     setCarData,

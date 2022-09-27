@@ -2,16 +2,22 @@ import styled from "styled-components";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import AppContext from "../../components/contextApi/AppContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Link from "next/link";
 
 export default function Inventory() {
-  const { carData } = useContext(AppContext);
+  const { carData, setCarData } = useContext(AppContext);
+
+  useEffect(() => {
+    const cars = JSON.parse(localStorage.getItem("cars"));
+
+    if (cars) setCarData(cars);
+  }, []);
 
   return (
     <>
       <Nav />
-      {carData.length > 0 ? (
+      {carData ? (
         <InventorySection>
           <div className="inventory-contents">
             <div className="image-section">
@@ -89,6 +95,9 @@ const InventorySection = styled.div`
   }
   .inventory-contents {
     .image-section {
+      .main-price {
+        display: none;
+      }
       .car-details {
         display: flex;
         justify-content: space-between;

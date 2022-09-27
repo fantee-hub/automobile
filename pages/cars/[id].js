@@ -259,7 +259,7 @@ export async function getStaticPaths() {
 }
 export async function getStaticProps({ params }) {
   const carData = getAllCarsData(params.id);
-  console.log(carData);
+
   return {
     props: {
       carData,

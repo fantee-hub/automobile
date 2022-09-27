@@ -21,6 +21,9 @@ import carEleven from "../assests/car6.jpg";
 import carTwelve from "../assests/car7.jpg";
 import carThirteen from "../assests/car8.jpg";
 import { getAllCars } from "../lib/cars";
+import AppContext from "../components/contextApi/AppContext";
+import Router from "next/router";
+import { useContext } from "react";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -75,6 +78,7 @@ export default function Home() {
   };
 
   const cars = getAllCars();
+  const { setCarData } = useContext(AppContext);
 
   const getCarsHandler = (e) => {
     const textValue = e.target.textContent.split(" ")[1].replace("$", "");
@@ -87,8 +91,10 @@ export default function Home() {
       }
       return car.price <= carPrice;
     });
-    console.log(check);
+    setCarData(check);
+    Router.push(`/inventory/${e.target.textContent}`);
   };
+
   return (
     <>
       <Nav />

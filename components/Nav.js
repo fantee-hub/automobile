@@ -26,7 +26,7 @@ const Nav = () => {
       linksContainer.current.getBoundingClientRect().height;
     const linksHeight = links.current.getBoundingClientRect().height;
     if (containerHeight === 0) {
-      linksContainer.current.style.height = `${linksHeight + 20}px`;
+      linksContainer.current.style.height = `${linksHeight + 25}px`;
     } else {
       linksContainer.current.style.height = 0;
     }
@@ -119,7 +119,9 @@ const Nav = () => {
       <MobileNav>
         <div className="nav-center">
           <div className="nav-header">
-            <img src={logo.src} className="logo" />
+            <Link href="/">
+              <img src={logo.src} className="logo" />
+            </Link>
             <button className="nav-toggle" onClick={navToggler}>
               <FontAwesomeIcon icon={faBars} />
             </button>
@@ -288,6 +290,10 @@ const MobileNav = styled.nav`
         .active-link {
           background-color: #3367fc;
           color: #ffffff;
+        }
+        .search-bar {
+          padding: 1rem 0;
+          cursor: pointer;
         }
       }
     }

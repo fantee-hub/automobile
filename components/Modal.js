@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Router from "next/router";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +10,7 @@ export default function Modal({ setSearchToggle }) {
   const cars = getAllCars();
   const [input, setInput] = useState("");
   const { pathname } = Router;
-  const { setCarData, setSearchInput } = useContext(AppContext);
+  const { carData, setCarData, setSearchInput } = useContext(AppContext);
 
   const getSearchInput = (e) => {
     setInput(e.target.value);
@@ -28,6 +28,9 @@ export default function Modal({ setSearchToggle }) {
     setCarData(check);
 
     Router.push(`/inventory/${input}`);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cars", JSON.stringify(check));
+    }
   };
 
   const closeSearchBar = () => {
