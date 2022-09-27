@@ -170,6 +170,10 @@ const NavBar = styled.nav`
         width: 300px;
         height: 50px;
         object-fit: contain;
+        @media screen and (max-width: 1024px) {
+          width: 200px;
+          height: 40px;
+        }
       }
     }
     display: flex;
@@ -180,6 +184,9 @@ const NavBar = styled.nav`
       align-items: center;
       .items {
         padding-left: 2rem;
+        @media screen and (max-width: 1024px) {
+          padding-left: 1rem;
+        }
       }
       .items.first-item {
         display: flex;

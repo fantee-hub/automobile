@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import Link from "next/link";
+
 import { getAllCarsId, getAllCarsData } from "../../lib/cars";
 import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -136,6 +137,7 @@ export default function Cars({ carData }) {
           </div>
         </MainContent>
       </CarSection>
+      <Footer />
     </>
   );
 }
@@ -152,6 +154,7 @@ const CarSection = styled.div`
     span {
       font-weight: 600;
       color: #3367fc;
+      cursor: pointer;
     }
   }
   .car-header {

@@ -20,6 +20,7 @@ import carTen from "../assests/car5.jpg";
 import carEleven from "../assests/car6.jpg";
 import carTwelve from "../assests/car7.jpg";
 import carThirteen from "../assests/car8.jpg";
+import { getAllCars } from "../lib/cars";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -72,6 +73,22 @@ export default function Home() {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
+  const cars = getAllCars();
+
+  const getCarsHandler = (e) => {
+    const textValue = e.target.textContent.split(" ")[1].replace("$", "");
+    const mainValue = textValue.replace(",", "");
+    const carPrice = parseInt(mainValue);
+    console.log(carPrice);
+    const check = cars.filter((car) => {
+      if (isNaN(carPrice)) {
+        return car;
+      }
+      return car.price <= carPrice;
+    });
+    console.log(check);
+  };
   return (
     <>
       <Nav />
@@ -93,7 +110,7 @@ export default function Home() {
             <div className="price-header">
               <h3> SEARCH BY PRICE</h3>
             </div>
-            <div className="price-content">
+            <div className="price-content" onClick={getCarsHandler}>
               <div className="price">
                 <p>Under $5,000</p>
                 <p>Under $15,000</p>
@@ -480,6 +497,18 @@ const HomeContainer = styled.div`
           margin: 0.5rem 0;
           padding: 0.6rem 2rem;
           text-align: center;
+          cursor: pointer;
+          @media screen and (max-width: 1024px) and (min-width: 766px) {
+            padding: 0.4rem;
+            margin: 1rem 0.3rem 1rem 0rem;
+            width: 100px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            cursor: pointer;
+          }
         }
       }
     }
@@ -504,6 +533,9 @@ const HomeContainer = styled.div`
     }
   }
   .col-2 {
+    @media screen and (max-width: 1024px) {
+      width: 65%;
+    }
     width: 70%;
     .first-slider {
       .slick-dots {
@@ -526,10 +558,16 @@ const HomeContainer = styled.div`
           p {
             padding: 0.1rem 0;
             color: #ffffff;
+            @media screen and (max-width: 1024px) {
+              font-size: 0.7rem;
+            }
           }
           h4 {
             color: #ffffff;
             padding-top: 0.2rem;
+            @media screen and (max-width: 1024px) {
+              font-size: 0.8rem;
+            }
           }
           .btn {
             padding-top: 0.5rem;
