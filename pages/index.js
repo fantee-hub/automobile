@@ -91,8 +91,11 @@ export default function Home() {
       }
       return car.price <= carPrice;
     });
-    setCarData(check);
+
     Router.push(`/inventory/${e.target.textContent}`);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cars", JSON.stringify(check));
+    }
   };
 
   return (
