@@ -4,7 +4,7 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { faMapMarker, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 export default function Contact() {
   const router = useRouter();
@@ -19,16 +19,19 @@ export default function Contact() {
         <div className="contact-contents">
           <div className="col-1">
             <div className="content-header">
-              <h3>Buderock Auto</h3>
+              <h3>Funfem Auto</h3>
             </div>
             <div className="contents">
               <div className="mail">
-                <span>Icon here</span>
+                <span>
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </span>
                 bancybuddy@yahoo.com
               </div>
               <div className="location">
-                111 Eadlyn St <br />
-                San Antonio,TX 78219
+                1721 Pleasanton Road,
+                <br />
+                San Antonio, Texas
               </div>
               <div className="sales">
                 <div className="col-1">Sales</div>
@@ -131,6 +134,11 @@ const ContactContainer = styled.div`
         }
         a {
           color: #3367fc;
+        }
+      }
+      .mail {
+        span {
+          padding-right: 0.4rem;
         }
       }
 
