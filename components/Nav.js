@@ -87,16 +87,7 @@ const Nav = () => {
                 <li>Home</li>
               </Link>
             </div>
-            <div
-              className={` ${
-                pathname === "/inventory/[id]" ? "active-link" : ""
-              }`}
-            >
-              <li>Inventory</li>
-            </div>
-            <div>
-              <li>Apply Online</li>
-            </div>
+
             <div className={` ${pathname === "/About" ? "active-link" : ""}`}>
               <Link href="/About">
                 <li>About Us</li>
@@ -133,8 +124,7 @@ const Nav = () => {
                   <li>Home</li>
                 </Link>
               </div>
-              <li>Inventory</li>
-              <li>Apply Online</li>
+
               <div className={` ${pathname === "/About" ? "active-link" : ""}`}>
                 <Link href="/About">
                   <li>About Us</li>
