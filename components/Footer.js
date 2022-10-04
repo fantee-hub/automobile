@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarker } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarker, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
@@ -29,8 +29,17 @@ export default function Footer() {
                 <FontAwesomeIcon icon={faMapMarker} />
               </div>
               <div className="address">
-                <p>111 Edalyn St,</p>
-                <p>San Antonio, Tx 78219</p>
+                <p>1721 Pleasanton Road,</p>
+                <p>San Antonio, Texas</p>
+              </div>
+            </div>
+            <div className="email">
+              <div className="icon">
+                <FontAwesomeIcon icon={faEnvelope} />
+              </div>
+
+              <div className="mail">
+                <a href="mailto:funfem2013@yahoo.com">Funfem2013@yahoo.com</a>
               </div>
             </div>
           </div>
@@ -76,10 +85,14 @@ const FooterContainer = styled.div`
     .text span {
       font-weight: 600;
     }
-    .location {
+    .location,
+    .email {
       display: flex;
       .icon {
         padding-right: 0.3rem;
+      }
+      a {
+        color: #ffffff;
       }
     }
     .icons {
