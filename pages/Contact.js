@@ -33,7 +33,7 @@ export default function Contact() {
               <div className="sales">
                 <div className="col-1">Sales</div>
                 <div className="col-2">
-                  <a href="https://wa.me/08161248386?text=I'm%20interested%20in%20your%20car%20for%20sale">
+                  <a href="https://wa.me/12404863233?text=I'm%20interested%20in%20your%20car%20for%20sale">
                     +1 240 486 3233
                   </a>
                 </div>
@@ -41,7 +41,7 @@ export default function Contact() {
               <div className="cell">
                 <div className="col-1">CELL</div>
                 <div className="col-2">
-                  <a href="https://wa.me/08161248386?text=I'm%20interested%20in%20your%20car%20for%20sale">
+                  <a href="https://wa.me/12404863233?text=I'm%20interested%20in%20your%20car%20for%20sale">
                     +1 240 486 3233
                   </a>
                 </div>
