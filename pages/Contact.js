@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 export default function Contact() {
   const router = useRouter();
@@ -30,11 +32,19 @@ export default function Contact() {
               </div>
               <div className="sales">
                 <div className="col-1">Sales</div>
-                <div className="col-2">(210) 447-7337</div>
+                <div className="col-2">
+                  <a href="https://wa.me/08161248386?text=I'm%20interested%20in%20your%20car%20for%20sale">
+                    +1 240 486 3233
+                  </a>
+                </div>
               </div>
               <div className="cell">
                 <div className="col-1">CELL</div>
-                <div className="col-2">(713) 363-3952</div>
+                <div className="col-2">
+                  <a href="https://wa.me/08161248386?text=I'm%20interested%20in%20your%20car%20for%20sale">
+                    +1 240 486 3233
+                  </a>
+                </div>
               </div>
             </div>
             <div className="content-header">
@@ -119,6 +129,9 @@ const ContactContainer = styled.div`
         .col-1 {
           font-weight: 600;
         }
+        a {
+          color: #3367fc;
+        }
       }
 
       .location {
@@ -133,20 +146,12 @@ const ContactContainer = styled.div`
     }
     .mapouter {
       .gmap_canvas {
-        position: relative;
         overflow: hidden;
         width: 100%;
 
-        padding-top: 56.25%;
         .responsive-iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          width: 100%;
-          height: 100%;
-
+          width: 400px;
+          height: 400px;
           border: none;
         }
       }

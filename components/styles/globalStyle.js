@@ -16,5 +16,7 @@ export const GlobalStyling = createGlobalStyle`
     }
     img{
         width:100%;
+    }a{
+        text-decoration: none;
     }
 `;
