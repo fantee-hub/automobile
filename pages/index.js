@@ -12,15 +12,8 @@ import Slider from "react-slick";
 import carThree from "../assests/download.jpeg";
 import carFour from "../assests/slide2.jpg";
 import carFive from "../assests/slide3.jpg";
-import carSix from "../assests/car1.jpg";
-import carSeven from "../assests/car2.jpg";
-import carEight from "../assests/car3.jpg";
-import carNine from "../assests/car4.jpg";
-import carTen from "../assests/car5.jpg";
-import carEleven from "../assests/car6.jpg";
-import carTwelve from "../assests/car7.jpg";
-import carThirteen from "../assests/car8.jpg";
 import { getAllCars } from "../lib/cars";
+import { client, urlFor } from "../lib/client";
 import AppContext from "../components/contextApi/AppContext";
 import Router from "next/router";
 import { useContext } from "react";
@@ -52,7 +45,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-export default function Home() {
+export default function Home({ allCars }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -78,6 +71,7 @@ export default function Home() {
   };
 
   const cars = getAllCars();
+  console.log(allCars);
   const { setCarData } = useContext(AppContext);
 
   const getCarsHandler = (e) => {
@@ -171,108 +165,23 @@ export default function Home() {
           </div>
           <div className="second-slider">
             <Slider {...settingsTwo}>
-              <Link href="/cars/2004 lexus es">
-                <div className="images">
-                  <Image src={carSix} />
-                  <div className="img-contents">
-                    <h4>2004 LEXUS ES</h4>
-                    <p>180,690 miles</p>
-                    <div className="btn">
-                      <button>$3,999</button>
+              {allCars.map((cars) => (
+                <Link href={`/cars/${cars.slug.current}`} key={cars._id}>
+                  <div className="images">
+                    <img
+                      src={urlFor(cars.image && cars.image[0])}
+                      alt={cars.name}
+                    />
+                    <div className="img-contents">
+                      <h4>{cars.name}</h4>
+                      <p>{cars.mileage}</p>
+                      <div className="btn">
+                        <button>${cars.price}</button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-              <Link href="/cars/2011 toyota camry">
-                <div className="images">
-                  <Image src={carSeven} />
-                  <div className="img-contents">
-                    <h4>2011 Toyota Camry</h4>
-                    <p>180,690 miles</p>
-                    <div className="btn">
-                      <button>$7,000</button>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/cars/2003 chevrolet suburban">
-                <div className="images">
-                  <Image src={carEight} />
-                  <div className="img-contents">
-                    <h4>2003 Chevrolet Suburban</h4>
-                    <p>180,690 miles</p>
-                    <div className="btn">
-                      <button>$4,000</button>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/cars/2011 chevrolet malibu">
-                <div className="images">
-                  <Image src={carNine} />
-                  <div className="img-contents">
-                    <h4>2011 Chevrolet Malibu</h4>
-                    <p>180,690 miles</p>
-                    <div className="btn">
-                      <button>$5,000</button>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/cars/2008 saturn aura">
-                <div className="images">
-                  <Image src={carTen} />
-                  <div className="img-contents">
-                    <h4>2008 Saturn Aura</h4>
-                    <p>180,690 miles</p>
-                    <div className="btn">
-                      <button>$2,999</button>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/cars/2014 chrysler 200">
-                <div className="images">
-                  <Image src={carEleven} />
-                  <div className="img-contents">
-                    <h4>2014 CHRYSLER 200</h4>
-                    <p>180,690 miles</p>
-                    <div className="btn">
-                      <button>$5,200</button>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/cars/2007 acura mdx">
-                <div className="images">
-                  <Image src={carTwelve} />
-                  <div className="img-contents">
-                    <h4>2007 ACURA MDX</h4>
-                    <p>180,690 miles</p>
-                    <div className="btn">
-                      <button>$6,499</button>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/cars/2004 ford f150 super cab">
-                <div className="images">
-                  <Image src={carThirteen} />
-                  <div className="img-contents">
-                    <h4>2004 FORD F150 SUPER CAB</h4>
-                    <p>180,690 miles</p>
-                    <div className="btn">
-                      <button>$7,000</button>
-                    </div>
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              ))}
             </Slider>
           </div>
           <div className="welcome-section">
@@ -329,108 +238,23 @@ export default function Home() {
         </div>
         <div className="second-slider">
           <Slider {...settingsThree}>
-            <Link href="/cars/2004 lexus es">
-              <div className="images">
-                <Image src={carSix} />
-                <div className="img-contents">
-                  <h4>2004 LEXUS ES</h4>
-                  <p>180,690 miles</p>
-                  <div className="btn">
-                    <button>$3,999</button>
+            {allCars.map((cars) => (
+              <Link href={`/cars/${cars.slug.current}`} key={cars._id}>
+                <div className="images">
+                  <img
+                    src={urlFor(cars.image && cars.image[0])}
+                    alt={cars.name}
+                  />
+                  <div className="img-contents">
+                    <h4>{cars.name}</h4>
+                    <p>{cars.mileage}</p>
+                    <div className="btn">
+                      <button>${cars.price}</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-            <Link href="/cars/2011 toyota camry">
-              <div className="images">
-                <Image src={carSeven} />
-                <div className="img-contents">
-                  <h4>2011 Toyota Camry</h4>
-                  <p>180,690 miles</p>
-                  <div className="btn">
-                    <button>$7,000</button>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            <Link href="/cars/2003 chevrolet suburban">
-              <div className="images">
-                <Image src={carEight} />
-                <div className="img-contents">
-                  <h4>2003 Chevrolet Suburban</h4>
-                  <p>180,690 miles</p>
-                  <div className="btn">
-                    <button>$4,000</button>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            <Link href="/cars/2011 chevrolet malibu">
-              <div className="images">
-                <Image src={carNine} />
-                <div className="img-contents">
-                  <h4>2011 Chevrolet Malibu</h4>
-                  <p>180,690 miles</p>
-                  <div className="btn">
-                    <button>$5,000</button>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            <Link href="/cars/2008 saturn aura">
-              <div className="images">
-                <Image src={carTen} />
-                <div className="img-contents">
-                  <h4>2008 Saturn Aura</h4>
-                  <p>180,690 miles</p>
-                  <div className="btn">
-                    <button>$2,999</button>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            <Link href="/cars/2014 chrysler 200">
-              <div className="images">
-                <Image src={carEleven} />
-                <div className="img-contents">
-                  <h4>2014 CHRYSLER 200</h4>
-                  <p>180,690 miles</p>
-                  <div className="btn">
-                    <button>$5,200</button>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            <Link href="/cars/2007 acura mdx">
-              <div className="images">
-                <Image src={carTwelve} />
-                <div className="img-contents">
-                  <h4>2007 ACURA MDX</h4>
-                  <p>180,690 miles</p>
-                  <div className="btn">
-                    <button>$6,499</button>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            <Link href="/cars/2004 ford f150 super cab">
-              <div className="images">
-                <Image src={carThirteen} />
-                <div className="img-contents">
-                  <h4>2004 FORD F150 SUPER CAB</h4>
-                  <p>180,690 miles</p>
-                  <div className="btn">
-                    <button>$7,000</button>
-                  </div>
-                </div>
-              </div>
-            </Link>
+              </Link>
+            ))}
           </Slider>
         </div>
         <div className="shop-section">
@@ -563,6 +387,12 @@ const HomeContainer = styled.div`
 
       .images {
         cursor: pointer;
+        img {
+          width: 100px;
+          height: 100px;
+          margin: 0 auto;
+          object-fit: contain;
+        }
         .img-contents {
           p {
             padding: 0.1rem 0;
@@ -704,3 +534,12 @@ const MobileView = styled.div`
     }
   }
 `;
+
+export const getServerSideProps = async () => {
+  const query = '*[_type == "car"]';
+  const allCars = await client.fetch(query);
+
+  return {
+    props: { allCars },
+  };
+};

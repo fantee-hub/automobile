@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useRouter } from "next/router";
+import { client, urlFor } from "../../lib/client";
 
 export default function Cars({ carData }) {
   const settings = {
@@ -18,6 +19,7 @@ export default function Cars({ carData }) {
     slidesToScroll: 1,
   };
   const router = useRouter();
+  console.log(carData);
 
   return (
     <>
@@ -28,18 +30,18 @@ export default function Cars({ carData }) {
         </div>
         <div className="car-header">
           <div className="car-title">
-            <h1>{carData.cars[0].commonName}</h1>
+            <h1>{carData[0].name}</h1>
           </div>
           <div className="car-price">
-            <h1>${carData.cars[0].price}</h1>
+            <h1>${carData[0].price}</h1>
           </div>
         </div>
         <MainContent>
           <div className="slider">
             <Slider {...settings}>
-              {carData.cars[0].images.map((img, index) => (
+              {carData[0].image.map((img, index) => (
                 <div className="images" key={index}>
-                  <img src={img} key={index} />
+                  <img src={urlFor(img && img)} alt={carData[0].name} />
                 </div>
               ))}
             </Slider>
@@ -49,55 +51,55 @@ export default function Cars({ carData }) {
               <div className="contents">
                 <div>
                   <span>Year:</span>
-                  {carData.cars[0].year}
+                  {carData[0].year}
                 </div>
                 <div>
                   <span>Make:</span>
-                  {carData.cars[0].name.make}
+                  {carData[0].make}
                 </div>
                 <div>
                   <span>Model:</span>
-                  {carData.cars[0].name.model}
+                  {carData[0].model}
                 </div>
                 <div>
                   <span>Trim:</span>
-                  {carData.cars[0].trim}
+                  {carData[0].trim}
                 </div>
                 <div>
                   <span>Drivetrain:</span>
-                  {carData.cars[0].driveTrain}
+                  {carData[0].drivetrain}
                 </div>
                 <div>
                   <span>Transmission:</span>
-                  {carData.cars[0].tranmission}
+                  {carData[0].transimission}
                 </div>
                 <div>
                   <span>Engine:</span>
-                  {carData.cars[0].engine}
+                  {carData[0].engine}
                 </div>
                 <div>
                   <span>Mileage:</span>
-                  {carData.cars[0].mileage}
+                  {carData[0].mileage}
                 </div>
                 <div>
                   <span>Doors:</span>
-                  {carData.cars[0].doors}
+                  {carData[0].doors}
                 </div>
                 <div>
                   <span>Exterior Color:</span>
-                  {carData.cars[0].exteriorColor}
+                  {carData[0].exteriorColor}
                 </div>
                 <div>
                   <span>Interior Color:</span>
-                  {carData.cars[0].interiorColor}
+                  {carData[0].interiorColor}
                 </div>
                 <div>
                   <span>VIN:</span>
-                  {carData.cars[0].vin}
+                  {carData[0].vin}
                 </div>
                 <div>
                   <span>Stock No:</span>
-                  {carData.cars[0].stockNo}
+                  {carData[0].stocknumber}
                 </div>
               </div>
             </div>
@@ -113,7 +115,7 @@ export default function Cars({ carData }) {
                     <input
                       type="text"
                       className="input-field price"
-                      placeholder={carData.cars[0].price}
+                      placeholder={carData[0].price}
                     />
                   </div>
                   <label htmlFor="downPayment">Down Payment</label>
@@ -250,15 +252,26 @@ const MainContent = styled.div`
   }
 `;
 
-export async function getStaticPaths() {
-  const paths = getAllCarsId();
+export async function getServerSidePaths() {
+  const query = '*[_type == "car"]';
+  const allCars = await client.fetch(query);
+
   return {
-    paths,
+    paths: allCars.map((cars) => {
+      const id = cars.slug.current;
+      return {
+        params: {
+          id,
+        },
+      };
+    }),
     fallback: false,
   };
 }
-export async function getStaticProps({ params }) {
-  const carData = getAllCarsData(params.id);
+export async function getServerSideProps({ params }) {
+  const query = '*[_type == "car"]';
+  const allCars = await client.fetch(query);
+  const carData = allCars.filter((car) => car.slug.current === params.id);
 
   return {
     props: {
