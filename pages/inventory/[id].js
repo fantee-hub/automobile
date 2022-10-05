@@ -26,47 +26,53 @@ export default function Inventory() {
                   <div className="main-price">
                     <h3>${data.price}</h3>
                   </div>
-                  <Link href={`/cars/${data.slug.current}`}>
-                    <div className="img-cont">
+                  <div className="img-cont">
+                    <Link href={`/cars/${data.slug.current}`}>
                       <img
                         src={urlFor(data.image && data.image[0])}
                         alt={data.name}
                       />
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
 
                   <div className="data-content">
                     <div className="header">
                       <h4>{data.name}</h4>
                     </div>
                     <div className="components">
-                      <div className="items">
-                        <h6>Drivetrain</h6>
-                        <p>{data.drivetrain}</p>
+                      <div className="row">
+                        <div className="items">
+                          <h6>Drivetrain</h6>
+                          <p>{data.drivetrain}</p>
+                        </div>
+                        <div className="items mobile">
+                          <h6>Transmission</h6>
+                          <p>{data.transimission}</p>
+                        </div>
+                        <div className="items mobile">
+                          <h6>Engine</h6>
+                          <p>{data.engine}</p>
+                        </div>
                       </div>
-                      <div className="items mobile">
-                        <h6>Transmission</h6>
-                        <p>{data.transimission}</p>
+                      <div className="row">
+                        <div className="items mobile">
+                          <h6>Mileage</h6>
+                          <p>{data.mileage}</p>
+                        </div>
+                        <div className="items mobile">
+                          <h6>Doors</h6>
+                          <p>{data.doors}</p>
+                        </div>
+                        <div className="items mobile">
+                          <h6>VIN</h6>
+                          <p>{data.vin}</p>
+                        </div>
                       </div>
-                      <div className="items mobile">
-                        <h6>Engine</h6>
-                        <p>{data.engine}</p>
-                      </div>
-                      <div className="items mobile">
-                        <h6>Mileage</h6>
-                        <p>{data.mileage}</p>
-                      </div>
-                      <div className="items mobile">
-                        <h6>Doors</h6>
-                        <p>{data.doors}</p>
-                      </div>
-                      <div className="items mobile">
-                        <h6>VIN</h6>
-                        <p>{data.vin}</p>
-                      </div>
-                      <div className="items">
-                        <h6>Stock Number</h6>
-                        <p>{data.stocknumber}</p>
+                      <div className="row">
+                        <div className="items">
+                          <h6>Stock Number</h6>
+                          <p>{data.stocknumber}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -104,6 +110,7 @@ const InventorySection = styled.div`
       .car-details {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         .img-cont {
           cursor: pointer;
           img {
@@ -113,12 +120,16 @@ const InventorySection = styled.div`
           }
         }
         .data-content {
+          padding: 1rem;
+          .header {
+            padding-bottom: 0.6rem;
+          }
           .components {
             display: flex;
-            flex-wrap: wrap;
+            justify-content: flex-start;
             .items {
-              padding: 0rem 1rem 1rem 0;
-              flex: 25%;
+              width: 10rem;
+              padding: 0 1rem 1rem 0;
               h6 {
                 color: #4868fc;
               }
