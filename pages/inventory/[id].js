@@ -3,16 +3,16 @@ import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import AppContext from "../../components/contextApi/AppContext";
 import { useContext, useEffect } from "react";
+import { urlFor } from "../../lib/client";
 import Link from "next/link";
 
 export default function Inventory() {
   const { carData, setCarData } = useContext(AppContext);
-
   useEffect(() => {
     const cars = JSON.parse(localStorage.getItem("cars"));
-
     if (cars) setCarData(cars);
   }, []);
+  console.log(carData);
 
   return (
     <>
@@ -26,24 +26,27 @@ export default function Inventory() {
                   <div className="main-price">
                     <h3>${data.price}</h3>
                   </div>
-                  <Link href={"/cars/" + data.commonName.toLowerCase()}>
+                  <Link href={`/cars/${data.slug.current}`}>
                     <div className="img-cont">
-                      <img src={data.images[0]} alt={data.name} key={index} />
+                      <img
+                        src={urlFor(data.image && data.image[0])}
+                        alt={data.name}
+                      />
                     </div>
                   </Link>
 
                   <div className="data-content">
                     <div className="header">
-                      <h4>{data.commonName}</h4>
+                      <h4>{data.name}</h4>
                     </div>
                     <div className="components">
                       <div className="items">
                         <h6>Drivetrain</h6>
-                        <p>{data.driveTrain}</p>
+                        <p>{data.drivetrain}</p>
                       </div>
                       <div className="items mobile">
                         <h6>Transmission</h6>
-                        <p>{data.tranmission}</p>
+                        <p>{data.transimission}</p>
                       </div>
                       <div className="items mobile">
                         <h6>Engine</h6>
@@ -63,7 +66,7 @@ export default function Inventory() {
                       </div>
                       <div className="items">
                         <h6>Stock Number</h6>
-                        <p>{data.stockNo}</p>
+                        <p>{data.stocknumber}</p>
                       </div>
                     </div>
                   </div>

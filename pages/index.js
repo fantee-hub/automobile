@@ -79,7 +79,7 @@ export default function Home({ allCars }) {
     const mainValue = textValue.replace(",", "");
     const carPrice = parseInt(mainValue);
     console.log(carPrice);
-    const check = cars.filter((car) => {
+    const check = allCars.filter((car) => {
       if (isNaN(carPrice)) {
         return car;
       }
