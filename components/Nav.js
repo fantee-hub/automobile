@@ -57,8 +57,8 @@ const Nav = () => {
                 </span>
               </div>
               <div className="item-content">
-                <p>111 Eadyln st</p>
-                <p>San Antonio, TX 78219</p>
+                <p>1721 Pleasanton Road,</p>
+                <p>San Antonio, Texas</p>
               </div>
             </div>
             <div className="items">
