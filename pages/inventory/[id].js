@@ -2,22 +2,29 @@ import styled from "styled-components";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import AppContext from "../../components/contextApi/AppContext";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { urlFor } from "../../lib/client";
 import Link from "next/link";
 
 export default function Inventory() {
-  const { carData, setCarData } = useContext(AppContext);
+  const { searchResult, carData, setCarData } = useContext(AppContext);
+  const [loaded, setLoaded] = useState(true);
+
   useEffect(() => {
-    const cars = JSON.parse(localStorage.getItem("cars"));
-    if (cars) setCarData(cars);
-  }, []);
-  console.log(carData);
+    const searched = JSON.parse(localStorage.getItem("searched-cars"));
+    if (searched) setCarData(searched);
+    if (searched.length === 0) {
+      setLoaded(false);
+    } else {
+      setLoaded(true);
+    }
+  }, [searchResult]);
+  console.log(loaded);
 
   return (
     <>
       <Nav />
-      {carData ? (
+      {carData && loaded ? (
         <InventorySection>
           <div className="inventory-contents">
             <div className="image-section">

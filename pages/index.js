@@ -16,7 +16,7 @@ import { getAllCars } from "../lib/cars";
 import { client, urlFor } from "../lib/client";
 import AppContext from "../components/contextApi/AppContext";
 import Router from "next/router";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -70,9 +70,15 @@ export default function Home({ allCars }) {
     slidesToScroll: 1,
   };
 
-  const cars = getAllCars();
-  console.log(allCars);
+  // const cars = getAllCars();
+  // console.log(allCars);
   const { setCarData } = useContext(AppContext);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cars", JSON.stringify(allCars));
+    }
+  }, []);
 
   const getCarsHandler = (e) => {
     const textValue = e.target.textContent.split(" ")[1].replace("$", "");
@@ -88,13 +94,13 @@ export default function Home({ allCars }) {
 
     Router.push(`/inventory/${e.target.textContent}`);
     if (typeof window !== "undefined") {
-      localStorage.setItem("cars", JSON.stringify(check));
+      localStorage.setItem("searched-cars", JSON.stringify(check));
     }
   };
 
   return (
     <>
-      <Nav />
+      <Nav carsData={allCars} />
       <HomeContainer>
         <Head>
           <title>Automobiles</title>

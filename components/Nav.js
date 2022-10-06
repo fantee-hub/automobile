@@ -13,7 +13,7 @@ import { useRef, useState, useContext } from "react";
 import Modal from "./Modal";
 import AppContext from "./contextApi/AppContext";
 
-const Nav = () => {
+const Nav = ({ carsData }) => {
   const { pathname } = useRouter();
   const [searchToggle, setSearchToggle] = useState(false);
   const { searchInput } = useContext(AppContext);
@@ -38,7 +38,11 @@ const Nav = () => {
   return (
     <>
       {searchToggle ? (
-        <Modal searchToggle={searchToggle} setSearchToggle={setSearchToggle} />
+        <Modal
+          cars={carsData}
+          searchToggle={searchToggle}
+          setSearchToggle={setSearchToggle}
+        />
       ) : (
         ""
       )}
@@ -290,3 +294,12 @@ const MobileNav = styled.nav`
   }
 `;
 export default Nav;
+
+export const getServerSideProps = async () => {
+  const query = '*[_type == "car"]';
+  const allCars = await client.fetch(query);
+
+  return {
+    props: { allCars },
+  };
+};

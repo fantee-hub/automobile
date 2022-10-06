@@ -6,30 +6,38 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { getAllCars } from "../lib/cars";
 import AppContext from "./contextApi/AppContext";
 
-export default function Modal({ setSearchToggle }) {
-  const cars = getAllCars();
+export default function Modal({ cars, setSearchToggle }) {
+  // const cars = getAllCars();
   const [input, setInput] = useState("");
 
-  const { setCarData, setSearchInput } = useContext(AppContext);
+  const { searchResult, setSearchResult, setSearchInput } =
+    useContext(AppContext);
+
+  useEffect(() => {
+    const cars = JSON.parse(localStorage.getItem("cars"));
+    if (cars) setSearchResult(cars);
+  }, []);
+  // console.log(searchResult);
 
   const getSearchInput = (e) => {
     setInput(e.target.value);
   };
+
   const searchCarHandler = (e) => {
     e.preventDefault();
     setInput("");
     setSearchInput(input);
     closeSearchBar();
-    const check = cars.filter((car) => {
-      if (car.commonName.toLowerCase().includes(input.toLowerCase())) {
+    const check = searchResult.filter((car) => {
+      if (car.name.toLowerCase().includes(input.toLowerCase())) {
         return car;
       }
     });
-    setCarData(check);
-
+    setSearchResult(check);
+    closeSearchBar();
     Router.push(`/inventory/${input}`);
     if (typeof window !== "undefined") {
-      localStorage.setItem("cars", JSON.stringify(check));
+      localStorage.setItem("searched-cars", JSON.stringify(check));
     }
   };
 
