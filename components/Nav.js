@@ -67,9 +67,16 @@ const Nav = ({ carsData }) => {
             </div>
             <div className="items">
               <div className="item-content">
-                <p>Sales: (210) 447-3345</p>
-                <p>Cell : 07045687965</p>
-                <p>Sales: rakitin@gmail.com</p>
+                <p>
+                  <span>Sales:</span> +1 240 486 3233
+                </p>
+                <p>
+                  <span>Cell:</span> +1 240 486 3233
+                </p>
+                <p>
+                  <span>Mail:</span>{" "}
+                  <a href="mailto:funfem2013@yahoo.com">Funfem2013@yahoo.com</a>
+                </p>
               </div>
             </div>
             <div className="items icon-item">
@@ -182,6 +189,14 @@ const NavBar = styled.nav`
         padding-left: 2rem;
         @media screen and (max-width: 1024px) {
           padding-left: 1rem;
+        }
+        .item-content {
+          a {
+            color: inherit;
+          }
+          span {
+            font-weight: 600;
+          }
         }
       }
       .items.first-item {
