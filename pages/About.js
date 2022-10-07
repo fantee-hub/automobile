@@ -16,9 +16,9 @@ export default function About() {
         <div className="about-content">
           <div className="text-content">
             <p>
-              With years of experience serving the San Antonio, TX, Buderock
-              Auto is dedicated to offering high-quality, pre-owned vehicles to
-              our customers.
+              With years of experience serving the San Antonio, TX, Funfem Auto
+              is dedicated to offering high-quality, pre-owned vehicles to our
+              customers.
             </p>
             <p>
               From the moment you walk through our door, we’re committed to
